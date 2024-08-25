@@ -5,6 +5,8 @@ import { FaDumbbell } from "react-icons/fa";
 import { MdMenu } from "react-icons/md";
 import { PiShoppingCartThin } from "react-icons/pi";
 import ResponsiveMenu from "./ResponsiveMenu";
+import { motion } from "framer-motion";
+import { FadeDown } from "../../utility/animation";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -12,7 +14,12 @@ const Navbar = () => {
   return (
     <>
       <nav>
-        <div className="container flex justify-between items-center py-8">
+        <motion.div
+          variants={FadeDown(0.1)}
+          initial="hidden"
+          animate="visible"
+          className="container flex justify-between items-center py-8"
+        >
           {/* Logo Section */}
           <div className="text-2xl flex items-center gap-2 font-bold uppercase">
             <FaDumbbell />
@@ -53,7 +60,7 @@ const Navbar = () => {
           >
             <MdMenu className="text-4xl" />
           </div>
-        </div>
+        </motion.div>
 
         {/* Mobile Sidebar section */}
         <ResponsiveMenu open={open} />
