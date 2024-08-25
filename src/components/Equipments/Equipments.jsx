@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { EquipmentData } from "../../mockData/data";
+import { SlideLeft } from "../../utility/animation";
 
 const Equipments = () => {
   return (
@@ -16,7 +17,10 @@ const Equipments = () => {
             </p>
           </div>
           {EquipmentData.map((data) => (
-            <div
+            <motion.div
+              variants={SlideLeft(data.delay)}
+              initial="hidden"
+              whileInView="visible"
               key={data.id}
               className="space-y-4 p-6 bg-[#fbfbfb] hover:bg-white rounded-xl hover:shadow-[0_0_22px_0_rgba(0,0,0,0.15)] duration-300"
             >
@@ -25,7 +29,7 @@ const Equipments = () => {
               </div>
               <p className="text-2xl font-semibold">{data.title}</p>
               <p className="text-gray-500">{data.desc}</p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
